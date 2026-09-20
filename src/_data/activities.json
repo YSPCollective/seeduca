@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "title_pt": "Atividades — Centro Sé Educa Loulé",
+    "title_en": "Activities — Centro Sé Educa Loulé",
+    "description_pt": "Apoio ao estudo, explicações e atividades extracurriculares disponíveis no Centro Sé Educa Loulé.",
+    "description_en": "Study support, tutoring and extracurricular activities available at Centro Sé Educa Loulé."
+  },
+  "intro": {
+    "label_pt": "O que oferecemos",
+    "label_en": "What we offer",
+    "heading_pt": "Atividades",
+    "heading_en": "Activities",
+    "body_pt": "Uma lista de exemplo — substituir pelas atividades reais em /admin/."
+  },
+  "groups": [
+    {
+      "name_pt": "Apoio ao Estudo",
+      "name_en": "Study Support",
+      "items": [
+        {
+          "name_pt": "Acompanhamento aos trabalhos de casa",
+          "name_en": "Homework support",
+          "description_pt": "Apoio diário à realização dos trabalhos de casa, com acompanhamento individual.",
+          "description_en": "Daily support with homework, with individual follow-up.",
+          "age_pt": "1º ao 9º ano",
+          "age_en": "Grades 1-9"
+        },
+        {
+          "name_pt": "Explicações de Matemática",
+          "name_en": "Maths tutoring",
+          "description_pt": "Reforço da disciplina em pequenos grupos ou individualmente.",
+          "description_en": "Extra help with the subject, in small groups or one-to-one.",
+          "age_pt": "2º ao 9º ano",
+          "age_en": "Grades 2-9"
+        },
+        {
+          "name_pt": "Explicações de Português",
+          "name_en": "Portuguese tutoring",
+          "description_pt": "Reforço da disciplina em pequenos grupos ou individualmente.",
+          "description_en": "Extra help with the subject, in small groups or one-to-one.",
+          "age_pt": "2º ao 9º ano",
+          "age_en": "Grades 2-9"
+        }
+      ]
+    },
+    {
+      "name_pt": "Atividades Extracurriculares",
+      "name_en": "Extracurricular Activities",
+      "items": [
+        {
+          "name_pt": "Artes & Culinária",
+          "name_en": "Arts & Cooking",
+          "description_pt": "Atividades criativas em grupo, uma vez por semana.",
+          "description_en": "Creative group activities, once a week.",
+          "age_pt": "1º ao 6º ano",
+          "age_en": "Grades 1-6"
+        },
+        {
+          "name_pt": "Desporto",
+          "name_en": "Sports",
+          "description_pt": "Jogos e atividade física orientada.",
+          "description_en": "Games and guided physical activity.",
+          "age_pt": "1º ao 9º ano",
+          "age_en": "Grades 1-9"
+        }
+      ]
+    }
+  ]
+}

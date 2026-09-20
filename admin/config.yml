@@ -1,0 +1,335 @@
+# Decap CMS configuration
+#
+# The admin interface is in Portuguese (locale: pt). Every text field
+# exists twice, once per language, using the suffixes _pt and _en.
+# Eleventy falls back to the Portuguese value when a translation is left
+# empty, so the site never shows a blank field.
+#
+# ─── ACCOUNT BOUND ────────────────────────────────────────────────
+# The `repo` line below is the ONLY line in this codebase that names a
+# GitHub account/repo. See HANDOVER.md if this ever moves.
+# ──────────────────────────────────────────────────────────────────
+#
+# Sign-in runs through this site's own Cloudflare Worker, in
+# worker/index.js. `auth_endpoint` is relative, so it always resolves
+# against whichever domain the CMS itself is being viewed on.
+
+backend:
+  name: github
+  repo: YSPCollective/seeduca
+  branch: main
+  auth_endpoint: api/auth
+
+locale: pt
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  # ─── PÁGINA INICIAL ───────────────────────────────────────────────
+  - name: "home"
+    label: "Página inicial"
+    files:
+      - name: "home"
+        label: "Página inicial"
+        file: "src/_data/home.json"
+        description: "Carrossel de imagens, texto sobre o centro, apresentação das atividades e horários."
+        fields:
+          - label: "SEO (texto que aparece no Google)"
+            name: "meta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Título (PT)", name: "title_pt", widget: "string" }
+              - { label: "Título (EN)", name: "title_en", widget: "string", required: false }
+              - { label: "Descrição (PT)", name: "description_pt", widget: "text" }
+              - { label: "Descrição (EN)", name: "description_en", widget: "text", required: false }
+
+          - label: "Carrossel principal"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Etiqueta pequena (PT)", name: "tagline_pt", widget: "string", required: false }
+              - { label: "Etiqueta pequena (EN)", name: "tagline_en", widget: "string", required: false }
+              - { label: "Título (PT)", name: "heading_pt", widget: "string" }
+              - { label: "Título (EN)", name: "heading_en", widget: "string", required: false }
+              - { label: "Subtítulo (PT)", name: "subheading_pt", widget: "string", required: false }
+              - { label: "Subtítulo (EN)", name: "subheading_en", widget: "string", required: false }
+              - label: "Imagens"
+                name: "slides"
+                widget: "list"
+                min: 1
+                max: 6
+                summary: "{{fields.alt_pt}}"
+                hint: "Entre 3 e 5 imagens funciona melhor. Formato horizontal, pelo menos 1600 px de largura."
+                fields:
+                  - { label: "Imagem", name: "image", widget: "image" }
+                  - { label: "Descrição da imagem (PT)", name: "alt_pt", widget: "string", hint: "Descreve a imagem para quem não a consegue ver." }
+                  - { label: "Descrição da imagem (EN)", name: "alt_en", widget: "string", required: false }
+                  - label: "Ajuste vertical (avançado)"
+                    name: "focus_y"
+                    widget: "number"
+                    required: false
+                    value_type: "int"
+                    min: 0
+                    max: 100
+                    hint: "Só é preciso mexer aqui se a imagem aparecer cortada no sítio errado. 0 mantém o topo visível, 100 mantém a base visível, deixar em branco usa o centro."
+
+          - label: "Sobre nós"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Etiqueta (PT)", name: "label_pt", widget: "string", required: false }
+              - { label: "Etiqueta (EN)", name: "label_en", widget: "string", required: false }
+              - { label: "Título (PT)", name: "heading_pt", widget: "string" }
+              - { label: "Título (EN)", name: "heading_en", widget: "string", required: false }
+              - { label: "Texto (PT)", name: "body_pt", widget: "markdown" }
+              - { label: "Texto (EN)", name: "body_en", widget: "markdown", required: false }
+              - { label: "Fotografia", name: "image", widget: "image", required: false }
+              - { label: "Descrição da fotografia (PT)", name: "image_alt_pt", widget: "string", required: false }
+              - { label: "Descrição da fotografia (EN)", name: "image_alt_en", widget: "string", required: false }
+
+          - label: "Apresentação das atividades"
+            name: "activities_teaser"
+            widget: "object"
+            fields:
+              - { label: "Etiqueta (PT)", name: "label_pt", widget: "string", required: false }
+              - { label: "Etiqueta (EN)", name: "label_en", widget: "string", required: false }
+              - { label: "Título (PT)", name: "heading_pt", widget: "string" }
+              - { label: "Título (EN)", name: "heading_en", widget: "string", required: false }
+              - { label: "Texto (PT)", name: "body_pt", widget: "markdown" }
+              - { label: "Texto (EN)", name: "body_en", widget: "markdown", required: false }
+              - { label: "Fotografia", name: "image", widget: "image", required: false }
+              - { label: "Descrição da fotografia (PT)", name: "image_alt_pt", widget: "string", required: false }
+              - { label: "Descrição da fotografia (EN)", name: "image_alt_en", widget: "string", required: false }
+
+          - label: "Apresentação dos horários"
+            name: "timetable_teaser"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Etiqueta (PT)", name: "label_pt", widget: "string", required: false }
+              - { label: "Etiqueta (EN)", name: "label_en", widget: "string", required: false }
+              - { label: "Título (PT)", name: "heading_pt", widget: "string" }
+              - { label: "Título (EN)", name: "heading_en", widget: "string", required: false }
+              - { label: "Texto (PT)", name: "body_pt", widget: "text", required: false }
+              - { label: "Texto (EN)", name: "body_en", widget: "text", required: false }
+
+  # ─── ATIVIDADES ───────────────────────────────────────────────────
+  - name: "activities"
+    label: "Atividades"
+    files:
+      - name: "activities"
+        label: "Página de atividades"
+        file: "src/_data/activities.json"
+        description: "As atividades agrupadas por tipo, com idades e descrição."
+        fields:
+          - label: "SEO (texto que aparece no Google)"
+            name: "meta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Título (PT)", name: "title_pt", widget: "string" }
+              - { label: "Título (EN)", name: "title_en", widget: "string", required: false }
+              - { label: "Descrição (PT)", name: "description_pt", widget: "text" }
+              - { label: "Descrição (EN)", name: "description_en", widget: "text", required: false }
+
+          - label: "Introdução"
+            name: "intro"
+            widget: "object"
+            fields:
+              - { label: "Etiqueta (PT)", name: "label_pt", widget: "string", required: false }
+              - { label: "Etiqueta (EN)", name: "label_en", widget: "string", required: false }
+              - { label: "Título (PT)", name: "heading_pt", widget: "string" }
+              - { label: "Título (EN)", name: "heading_en", widget: "string", required: false }
+              - { label: "Texto (PT)", name: "body_pt", widget: "text", required: false }
+              - { label: "Texto (EN)", name: "body_en", widget: "text", required: false }
+
+          - label: "Grupos de atividades"
+            name: "groups"
+            widget: "list"
+            summary: "{{fields.name_pt}}"
+            fields:
+              - { label: "Nome do grupo (PT)", name: "name_pt", widget: "string" }
+              - { label: "Nome do grupo (EN)", name: "name_en", widget: "string", required: false }
+              - label: "Atividades"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.name_pt}}"
+                fields:
+                  - { label: "Nome (PT)", name: "name_pt", widget: "string" }
+                  - { label: "Nome (EN)", name: "name_en", widget: "string", required: false }
+                  - { label: "Descrição (PT)", name: "description_pt", widget: "text", required: false }
+                  - { label: "Descrição (EN)", name: "description_en", widget: "text", required: false }
+                  - { label: "Idades (PT)", name: "age_pt", widget: "string", required: false, hint: "Por exemplo: 1º ao 4º ano" }
+                  - { label: "Idades (EN)", name: "age_en", widget: "string", required: false }
+
+  # ─── HORÁRIO GERAL ────────────────────────────────────────────────
+  - name: "timetable"
+    label: "Horário Geral"
+    files:
+      - name: "timetable"
+        label: "Horário Geral"
+        file: "src/_data/timetable.json"
+        description: "O horário geral não específico, mostrado numa única página (ex.: 16h-19h Matemática nível 1-4). Para o horário individual de cada professor, ver a coleção Professores."
+        fields:
+          - label: "SEO (texto que aparece no Google)"
+            name: "meta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Título (PT)", name: "title_pt", widget: "string" }
+              - { label: "Título (EN)", name: "title_en", widget: "string", required: false }
+              - { label: "Descrição (PT)", name: "description_pt", widget: "text" }
+              - { label: "Descrição (EN)", name: "description_en", widget: "text", required: false }
+
+          - label: "Introdução"
+            name: "intro"
+            widget: "object"
+            fields:
+              - { label: "Etiqueta (PT)", name: "label_pt", widget: "string", required: false }
+              - { label: "Etiqueta (EN)", name: "label_en", widget: "string", required: false }
+              - { label: "Título (PT)", name: "heading_pt", widget: "string" }
+              - { label: "Título (EN)", name: "heading_en", widget: "string", required: false }
+              - { label: "Texto (PT)", name: "body_pt", widget: "text", required: false }
+
+          - label: "Horário"
+            name: "entries"
+            widget: "list"
+            summary: "{{fields.day_key}} · {{fields.time}} · {{fields.activity_pt}}"
+            fields:
+              - label: "Dia"
+                name: "day_key"
+                widget: "select"
+                options:
+                  - { label: "Segunda-feira", value: "mon" }
+                  - { label: "Terça-feira", value: "tue" }
+                  - { label: "Quarta-feira", value: "wed" }
+                  - { label: "Quinta-feira", value: "thu" }
+                  - { label: "Sexta-feira", value: "fri" }
+                  - { label: "Sábado", value: "sat" }
+                  - { label: "Domingo", value: "sun" }
+              - { label: "Hora", name: "time", widget: "string", hint: "Por exemplo: 16h00 – 17h00" }
+              - { label: "Atividade (PT)", name: "activity_pt", widget: "string" }
+              - { label: "Atividade (EN)", name: "activity_en", widget: "string", required: false }
+              - { label: "Nível / Ano (PT)", name: "level_pt", widget: "string", required: false }
+              - { label: "Nível / Ano (EN)", name: "level_en", widget: "string", required: false }
+
+  # ─── PROFESSORES ──────────────────────────────────────────────────
+  - name: "teachers"
+    label: "Professores"
+    files:
+      - name: "teachers"
+        label: "Professores"
+        file: "src/_data/teachers.json"
+        description: "Cada professor tem a sua própria página de horário, gerada automaticamente a partir daqui. Gravar aqui atualiza essa página assim que o site recompila (poucos minutos)."
+        fields:
+          - label: "SEO (texto que aparece no Google)"
+            name: "meta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Título (PT)", name: "title_pt", widget: "string" }
+              - { label: "Título (EN)", name: "title_en", widget: "string", required: false }
+              - { label: "Descrição (PT)", name: "description_pt", widget: "text" }
+              - { label: "Descrição (EN)", name: "description_en", widget: "text", required: false }
+
+          - label: "Introdução (página Professores)"
+            name: "intro"
+            widget: "object"
+            fields:
+              - { label: "Etiqueta (PT)", name: "label_pt", widget: "string", required: false }
+              - { label: "Etiqueta (EN)", name: "label_en", widget: "string", required: false }
+              - { label: "Título (PT)", name: "heading_pt", widget: "string" }
+              - { label: "Título (EN)", name: "heading_en", widget: "string", required: false }
+              - { label: "Texto (PT)", name: "body_pt", widget: "text", required: false }
+
+          - label: "Lista de professores"
+            name: "list"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Identificador do URL (slug)", name: "slug", widget: "string", hint: "Só letras minúsculas, números e hífens. Define o endereço da página, por exemplo /professores/ana-silva/. Não mudar depois de partilhado." }
+              - { label: "Função (PT)", name: "role_pt", widget: "string" }
+              - { label: "Função (EN)", name: "role_en", widget: "string", required: false }
+              - { label: "Fotografia", name: "photo", widget: "image", required: false }
+              - { label: "Biografia curta (PT)", name: "bio_pt", widget: "text", required: false }
+              - { label: "Biografia curta (EN)", name: "bio_en", widget: "text", required: false }
+              - label: "Horário semanal"
+                name: "schedule"
+                widget: "list"
+                summary: "{{fields.day_key}} · {{fields.time}} · {{fields.activity_pt}}"
+                fields:
+                  - label: "Dia"
+                    name: "day_key"
+                    widget: "select"
+                    options:
+                      - { label: "Segunda-feira", value: "mon" }
+                      - { label: "Terça-feira", value: "tue" }
+                      - { label: "Quarta-feira", value: "wed" }
+                      - { label: "Quinta-feira", value: "thu" }
+                      - { label: "Sexta-feira", value: "fri" }
+                      - { label: "Sábado", value: "sat" }
+                      - { label: "Domingo", value: "sun" }
+                  - { label: "Hora", name: "time", widget: "string", hint: "Por exemplo: 16h00 – 17h00" }
+                  - { label: "Atividade (PT)", name: "activity_pt", widget: "string" }
+                  - { label: "Atividade (EN)", name: "activity_en", widget: "string", required: false }
+
+  # ─── CONTACTO ─────────────────────────────────────────────────────
+  - name: "contact"
+    label: "Contacto"
+    files:
+      - name: "contact"
+        label: "Página de contacto"
+        file: "src/_data/contact.json"
+        description: "Morada, horário, telefone e redes sociais. A morada e o horário aparecem também no rodapé de todas as páginas."
+        fields:
+          - label: "SEO (texto que aparece no Google)"
+            name: "meta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Título (PT)", name: "title_pt", widget: "string" }
+              - { label: "Título (EN)", name: "title_en", widget: "string", required: false }
+              - { label: "Descrição (PT)", name: "description_pt", widget: "text" }
+              - { label: "Descrição (EN)", name: "description_en", widget: "text", required: false }
+
+          - label: "Introdução"
+            name: "intro"
+            widget: "object"
+            fields:
+              - { label: "Etiqueta (PT)", name: "label_pt", widget: "string", required: false }
+              - { label: "Etiqueta (EN)", name: "label_en", widget: "string", required: false }
+              - { label: "Título (PT)", name: "heading_pt", widget: "string" }
+              - { label: "Título (EN)", name: "heading_en", widget: "string", required: false }
+              - { label: "Texto (PT)", name: "body_pt", widget: "text", required: false }
+
+          - { label: "Nome completo / Entidade", name: "entity_name", widget: "string", required: false }
+          - { label: "NIF", name: "nif", widget: "string", required: false }
+          - { label: "Morada", name: "address_lines", widget: "text", hint: "Uma linha de cada vez." }
+          - { label: "Telefone (como aparece no site)", name: "phone", widget: "string", required: false }
+          - { label: "Telefone (para o botão de chamada)", name: "phone_link", widget: "string", required: false, hint: "Sem espaços, com indicativo. Por exemplo +351900000000" }
+          - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false, hint: "Só números, com indicativo. Deixa vazio se não usar." }
+          - { label: "Email", name: "email", widget: "string", required: false }
+
+          - { label: "Mapa (link de incorporação)", name: "map_embed_url", widget: "string", required: false, hint: "No Google Maps: Partilhar, Incorporar um mapa, e copia apenas o endereço que está dentro de src=\"...\"" }
+          - { label: "Mapa (link para abrir)", name: "map_link", widget: "string", required: false }
+
+          - label: "Horário de funcionamento"
+            name: "hours"
+            widget: "list"
+            summary: "{{fields.day_pt}}: {{fields.hours_pt}}"
+            fields:
+              - { label: "Dia (PT)", name: "day_pt", widget: "string" }
+              - { label: "Dia (EN)", name: "day_en", widget: "string", required: false }
+              - { label: "Horas (PT)", name: "hours_pt", widget: "string" }
+              - { label: "Horas (EN)", name: "hours_en", widget: "string", required: false }
+
+          - label: "Redes sociais"
+            name: "social"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Instagram", name: "instagram", widget: "string", required: false }
+              - { label: "Facebook", name: "facebook", widget: "string", required: false }

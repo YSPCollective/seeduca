@@ -1,0 +1,33 @@
+<section class="page-head">
+  <div class="wrap-narrow">
+    {% if teacher.photo %}
+    <img class="teacher-profile-photo" src="{{ teacher.photo | img }}" alt="{{ teacher.name }}" loading="lazy">
+    {% endif %}
+    <span class="eyebrow">{{ teacher | loc('role', locale) }}</span>
+    <h1 class="page-title">{{ teacher.name }}</h1>
+    {% set bio = teacher | loc('bio', locale) %}
+    {% if bio %}<p class="section-desc">{{ bio }}</p>{% endif %}
+    <a class="link-quiet" href="{{ site.pages.teachers[locale] }}">&larr; {{ t.back_to_teachers }}</a>
+  </div>
+</section>
+
+<section class="section section-timetable">
+  <div class="wrap-narrow">
+    {% set grouped = teacher.schedule | byDay(site.dayOrder) %}
+    {% if grouped.length %}
+    {% for group in grouped %}
+    <div class="timetable-day reveal">
+      <h2 class="timetable-day-title">{{ t.days[group.day] }}</h2>
+      <ul class="timetable-list">
+        {% for entry in group.entries %}
+        <li class="timetable-row">
+          <span class="tt-time">{{ entry.time }}</span>
+          <span class="tt-activity">{{ entry | loc('activity', locale) }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</section>

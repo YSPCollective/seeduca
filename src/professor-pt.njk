@@ -1,0 +1,12 @@
+---
+layout: base.njk
+pageKey: teachers
+locale: pt
+pagination:
+  data: teachers.list
+  size: 1
+  alias: teacher
+permalink: "{{ site.pages.teachers.pt }}{{ teacher.slug }}/"
+---
+
+{% include "teacher-profile.njk" %}

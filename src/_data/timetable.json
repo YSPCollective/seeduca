@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "title_pt": "Horário Geral — Centro Sé Educa Loulé",
+    "title_en": "General Timetable — Centro Sé Educa Loulé",
+    "description_pt": "Horário geral das atividades do Centro Sé Educa Loulé, por dia da semana.",
+    "description_en": "General activity timetable for Centro Sé Educa Loulé, by day of the week."
+  },
+  "intro": {
+    "label_pt": "Esta semana",
+    "label_en": "This week",
+    "heading_pt": "Horário Geral",
+    "heading_en": "General Timetable",
+    "body_pt": "Uma visão geral das atividades por dia e hora. Para o horário individual de cada professor, ver a página Professores."
+  },
+  "entries": [
+    { "day_key": "mon", "time": "16h00 – 17h00", "activity_pt": "Apoio ao Estudo", "activity_en": "Study Support", "level_pt": "1º–4º ano", "level_en": "Grades 1-4" },
+    { "day_key": "mon", "time": "17h00 – 18h00", "activity_pt": "Explicações de Matemática", "activity_en": "Maths Tutoring", "level_pt": "5º–9º ano", "level_en": "Grades 5-9" },
+    { "day_key": "tue", "time": "16h00 – 17h00", "activity_pt": "Apoio ao Estudo", "activity_en": "Study Support", "level_pt": "1º–4º ano", "level_en": "Grades 1-4" },
+    { "day_key": "tue", "time": "17h00 – 18h00", "activity_pt": "Artes & Culinária", "activity_en": "Arts & Cooking", "level_pt": "1º–6º ano", "level_en": "Grades 1-6" },
+    { "day_key": "wed", "time": "16h00 – 17h00", "activity_pt": "Explicações de Português", "activity_en": "Portuguese Tutoring", "level_pt": "5º–9º ano", "level_en": "Grades 5-9" },
+    { "day_key": "thu", "time": "16h00 – 17h00", "activity_pt": "Apoio ao Estudo", "activity_en": "Study Support", "level_pt": "1º–4º ano", "level_en": "Grades 1-4" },
+    { "day_key": "thu", "time": "17h00 – 18h00", "activity_pt": "Desporto", "activity_en": "Sports", "level_pt": "1º–9º ano", "level_en": "Grades 1-9" },
+    { "day_key": "fri", "time": "16h00 – 17h00", "activity_pt": "Apoio ao Estudo", "activity_en": "Study Support", "level_pt": "1º–4º ano", "level_en": "Grades 1-4" }
+  ]
+}

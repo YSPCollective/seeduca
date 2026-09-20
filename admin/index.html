@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Centro Sé Educa Loulé, gestão do site</title>
+</head>
+<body>
+  <script>
+    // Hold initialisation so base_url can be filled in below.
+    window.CMS_MANUAL_INIT = true;
+  </script>
+  <script src="https://unpkg.com/decap-cms@3.3.3/dist/decap-cms.js"></script>
+  <script>
+    // The OAuth endpoints live on this same site, handled by worker/index.js.
+    // Taking the origin from the browser rather than hardcoding it means
+    // this keeps working on the workers.dev address, on preview
+    // deployments, and on a custom domain later, with nothing to edit.
+    // Everything else is merged in from config.yml.
+    CMS.init({
+      config: {
+        backend: {
+          base_url: window.location.origin,
+        },
+      },
+    });
+  </script>
+</body>
+</html>

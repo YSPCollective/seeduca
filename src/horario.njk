@@ -1,0 +1,42 @@
+---
+layout: base.njk
+pageKey: timetable
+pagination:
+  data: site.localeCodes
+  size: 1
+  alias: locale
+permalink: "{{ site.pages.timetable[locale] }}"
+---
+
+<section class="page-head">
+  <div class="wrap-narrow">
+    <span class="eyebrow">{{ timetable.intro | loc('label', locale) }}</span>
+    <h1 class="page-title">{{ timetable.intro | loc('heading', locale) }}</h1>
+    <p class="section-desc">{{ timetable.intro | loc('body', locale) }}</p>
+  </div>
+</section>
+
+<section class="section section-timetable">
+  <div class="wrap-narrow">
+    {% for group in timetable.entries | byDay(site.dayOrder) %}
+    <div class="timetable-day reveal">
+      <h2 class="timetable-day-title">{{ t.days[group.day] }}</h2>
+      <ul class="timetable-list">
+        {% for entry in group.entries %}
+        <li class="timetable-row">
+          <span class="tt-time">{{ entry.time }}</span>
+          <span class="tt-activity">{{ entry | loc('activity', locale) }}</span>
+          {% set level = entry | loc('level', locale) %}
+          {% if level %}<span class="tt-level">{{ level }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+
+    <div class="cta-band reveal">
+      <p>{{ teachers.intro | loc('body', locale) }}</p>
+      <a class="btn" href="{{ site.pages.teachers[locale] }}">{{ t.nav_teachers }}</a>
+    </div>
+  </div>
+</section>

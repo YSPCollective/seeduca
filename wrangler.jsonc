@@ -1,0 +1,33 @@
+{
+  // Cloudflare's build reads this to know how to deploy the project: run
+  // the build command from package.json, then wire up this Worker with the
+  // build output (_site) served as static assets, falling through to
+  // worker/index.js only for the two OAuth routes it handles.
+  "name": "cse-loule",
+  "main": "worker/index.js",
+  "compatibility_date": "2024-09-23",
+  "assets": {
+    "directory": "_site",
+    "binding": "ASSETS"
+  },
+  "vars": {
+    // The GitHub OAuth app's Client ID. Not sensitive: it is visible in the
+    // browser's address bar during the OAuth redirect regardless of where
+    // it is stored. Fill this in once the OAuth app is registered — see
+    // HANDOVER.md — and redeploy.
+    "GITHUB_OAUTH_ID": "REPLACE_WITH_OAUTH_CLIENT_ID"
+  }
+  // The Client Secret needs to stay out of the repo. Add it as a Cloudflare
+  // Secrets Store secret (Workers & Pages, this project, Settings, Bindings,
+  // Add binding, Secrets Store) bound to the name GITHUB_OAUTH_SECRET, then
+  // uncomment and fill in the block below with that store's id. See
+  // HANDOVER.md for the full walkthrough.
+  //
+  // "secrets_store_secrets": [
+  //   {
+  //     "binding": "GITHUB_OAUTH_SECRET",
+  //     "store_id": "REPLACE_WITH_STORE_ID",
+  //     "secret_name": "GITHUB_OAUTH_SECRET"
+  //   }
+  // ]
+}

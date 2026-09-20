@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "title_pt": "Contacto — Centro Sé Educa Loulé",
+    "title_en": "Contact — Centro Sé Educa Loulé",
+    "description_pt": "Morada, horário de funcionamento e contactos do Centro Sé Educa Loulé, em Loulé.",
+    "description_en": "Address, opening hours and contact details for Centro Sé Educa Loulé, in Loulé."
+  },
+  "intro": {
+    "label_pt": "Fale connosco",
+    "label_en": "Get in touch",
+    "heading_pt": "Contacto",
+    "heading_en": "Contact",
+    "body_pt": "Para inscrições ou mais informação, contacte-nos por telefone, email ou WhatsApp."
+  },
+  "entity_name": "",
+  "nif": "",
+  "address_lines": "Rua de exemplo, 123\n8100-000 Loulé",
+  "phone": "+351 900 000 000",
+  "phone_link": "+351900000000",
+  "whatsapp": "351900000000",
+  "email": "geral@cse-loule.example",
+  "map_embed_url": "",
+  "map_link": "",
+  "hours": [
+    { "day_pt": "Segunda a Sexta", "day_en": "Monday to Friday", "hours_pt": "16h00 – 19h00", "hours_en": "4pm – 7pm" },
+    { "day_pt": "Fim de semana", "day_en": "Weekend", "hours_pt": "Encerrado", "hours_en": "Closed" }
+  ],
+  "social": {
+    "instagram": "",
+    "facebook": ""
+  }
+}

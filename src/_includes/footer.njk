@@ -1,0 +1,37 @@
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col footer-brand">
+      <span class="footer-logo-text">{{ site.name }}</span>
+      <p class="footer-address">{{ contact.address_lines | replace('\n', '<br>') | safe }}</p>
+    </div>
+
+    <div class="footer-col">
+      <h2 class="footer-heading">{{ t.hours_title }}</h2>
+      <ul class="footer-hours">
+        {% for row in contact.hours %}
+        <li><span>{{ row | loc('day', locale) }}</span><span>{{ row | loc('hours', locale) }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h2 class="footer-heading">{{ t.contact_label }}</h2>
+      <ul class="footer-contact">
+        {% if contact.phone %}<li><a href="tel:{{ contact.phone_link or contact.phone }}">{{ contact.phone }}</a></li>{% endif %}
+        {% if contact.email %}<li><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></li>{% endif %}
+        {% if contact.whatsapp %}<li><a href="https://wa.me/{{ contact.whatsapp }}" rel="noopener noreferrer" target="_blank">WhatsApp</a></li>{% endif %}
+        {% if contact.social.instagram %}<li><a href="{{ contact.social.instagram }}" rel="noopener noreferrer" target="_blank">Instagram</a></li>{% endif %}
+        {% if contact.social.facebook %}<li><a href="{{ contact.social.facebook }}" rel="noopener noreferrer" target="_blank">Facebook</a></li>{% endif %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>&copy; {{ buildYear }} {{ site.name }}. {{ t.rights }}.</span>
+    <div class="lang-switch">
+      {% for l in site.locales %}
+      <a href="{{ site.pages[pageKey][l.code] }}" lang="{{ l.htmlLang }}" class="lang-option{% if l.code == locale %} is-active{% endif %}">{{ l.short }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</footer>

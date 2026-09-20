@@ -1,0 +1,96 @@
+---
+layout: base.njk
+pageKey: home
+pagination:
+  data: site.localeCodes
+  size: 1
+  alias: locale
+permalink: "{{ site.pages.home[locale] }}"
+---
+
+<section class="hero" data-carousel aria-roledescription="carousel">
+  <div class="hero-slides">
+    {% for slide in home.hero.slides %}
+    <figure class="hero-slide{% if loop.first %} is-active{% endif %}" data-slide aria-hidden="{{ 'false' if loop.first else 'true' }}">
+      <img src="{{ slide.image | img }}"
+           alt="{{ slide | loc('alt', locale) }}"
+           style="object-position: 50% {{ slide.focus_y if slide.focus_y != undefined else 50 }}%;"
+           {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+    </figure>
+    {% endfor %}
+  </div>
+
+  <div class="hero-overlay">
+    <div class="hero-copy">
+      <span class="eyebrow eyebrow-light">{{ home.hero | loc('tagline', locale) }}</span>
+      <h1 class="hero-heading">{{ home.hero | loc('heading', locale) }}</h1>
+      <p class="hero-sub">{{ home.hero | loc('subheading', locale) }}</p>
+      <a class="btn btn-light" href="{{ site.pages.activities[locale] }}">{{ t.see_activities }}</a>
+    </div>
+  </div>
+
+  {% if home.hero.slides.length > 1 %}
+  <button class="hero-arrow hero-arrow-prev" type="button" data-carousel-prev>
+    <span class="sr-only">{{ t.carousel_prev }}</span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+  </button>
+  <button class="hero-arrow hero-arrow-next" type="button" data-carousel-next>
+    <span class="sr-only">{{ t.carousel_next }}</span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+  </button>
+
+  <div class="hero-dots" role="tablist">
+    {% for slide in home.hero.slides %}
+    <button class="hero-dot{% if loop.first %} is-active{% endif %}" type="button" data-carousel-dot data-index="{{ loop.index0 }}">
+      <span class="sr-only">{{ t.carousel_goto }} {{ loop.index }}</span>
+    </button>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+
+<section class="section section-teaser" id="about">
+  <div class="split">
+    <div class="split-media reveal">
+      <img src="{{ home.about.image | img }}" alt="{{ home.about | loc('image_alt', locale) }}" loading="lazy">
+    </div>
+    <div class="split-copy reveal">
+      <span class="eyebrow">{{ home.about | loc('label', locale) }}</span>
+      <h2 class="section-title">{{ home.about | loc('heading', locale) }}</h2>
+      <div class="prose">{{ home.about | locmd('body', locale) | safe }}</div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-teaser" id="activities">
+  <div class="split split-reverse">
+    <div class="split-media reveal">
+      <img src="{{ home.activities_teaser.image | img }}" alt="{{ home.activities_teaser | loc('image_alt', locale) }}" loading="lazy">
+    </div>
+    <div class="split-copy reveal">
+      <span class="eyebrow">{{ home.activities_teaser | loc('label', locale) }}</span>
+      <h2 class="section-title">{{ home.activities_teaser | loc('heading', locale) }}</h2>
+      <div class="prose">{{ home.activities_teaser | locmd('body', locale) | safe }}</div>
+
+      <ul class="teaser-list">
+        {% for group in activities.groups %}
+        <li>{{ group | loc('name', locale) }}</li>
+        {% endfor %}
+      </ul>
+
+      <a class="btn" href="{{ site.pages.activities[locale] }}">{{ t.see_activities }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-cta">
+  <div class="wrap-narrow cta-band reveal">
+    <span class="eyebrow">{{ home.timetable_teaser | loc('label', locale) }}</span>
+    <h2 class="section-title">{{ home.timetable_teaser | loc('heading', locale) }}</h2>
+    <p class="section-desc">{{ home.timetable_teaser | loc('body', locale) }}</p>
+    <div class="cta-band-actions">
+      <a class="btn" href="{{ site.pages.timetable[locale] }}">{{ t.view_timetable }}</a>
+      <a class="btn btn-outline" href="{{ site.pages.teachers[locale] }}">{{ t.nav_teachers }}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,75 @@
+---
+layout: base.njk
+pageKey: contact
+pagination:
+  data: site.localeCodes
+  size: 1
+  alias: locale
+permalink: "{{ site.pages.contact[locale] }}"
+---
+
+<section class="page-head">
+  <div class="wrap-narrow">
+    <span class="eyebrow">{{ contact.intro | loc('label', locale) }}</span>
+    <h1 class="page-title">{{ contact.intro | loc('heading', locale) }}</h1>
+    <p class="section-desc">{{ contact.intro | loc('body', locale) }}</p>
+  </div>
+</section>
+
+<section class="section section-contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-block reveal">
+        <h2 class="contact-heading">{{ t.address }}</h2>
+        <p class="contact-address">{{ contact.address_lines | replace('\n', '<br>') | safe }}</p>
+        {% if contact.map_link %}
+        <a class="link-quiet" href="{{ contact.map_link }}" target="_blank" rel="noopener noreferrer">{{ t.find_us }}</a>
+        {% endif %}
+      </div>
+
+      <div class="contact-block reveal">
+        <h2 class="contact-heading">{{ t.hours_title }}</h2>
+        <ul class="hours-list">
+          {% for row in contact.hours %}
+          <li><span>{{ row | loc('day', locale) }}</span><span>{{ row | loc('hours', locale) }}</span></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="contact-block reveal">
+        <h2 class="contact-heading">{{ t.contact_label }}</h2>
+        <ul class="contact-list">
+          {% if contact.phone %}
+          <li><span class="contact-label">{{ t.phone }}</span><a href="tel:{{ contact.phone_link or contact.phone }}">{{ contact.phone }}</a></li>
+          {% endif %}
+          {% if contact.email %}
+          <li><span class="contact-label">{{ t.email }}</span><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></li>
+          {% endif %}
+          {% if contact.whatsapp %}
+          <li><span class="contact-label">WhatsApp</span><a href="https://wa.me/{{ contact.whatsapp }}" target="_blank" rel="noopener noreferrer">{{ contact.whatsapp }}</a></li>
+          {% endif %}
+        </ul>
+
+        {% if contact.social.instagram or contact.social.facebook %}
+        <h2 class="contact-heading contact-heading-spaced">{{ t.follow_us }}</h2>
+        <ul class="contact-list">
+          {% if contact.social.instagram %}<li><a href="{{ contact.social.instagram }}" target="_blank" rel="noopener noreferrer">Instagram</a></li>{% endif %}
+          {% if contact.social.facebook %}<li><a href="{{ contact.social.facebook }}" target="_blank" rel="noopener noreferrer">Facebook</a></li>{% endif %}
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% if contact.map_embed_url %}
+  <div class="map">
+    <iframe src="{{ contact.map_embed_url }}"
+            title="{{ t.find_us }}"
+            width="100%" height="480"
+            style="border:0"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  {% endif %}
+</section>

@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "title_pt": "Centro Sé Educa Loulé — Apoio ao Estudo & ATL",
+    "title_en": "Centro Sé Educa Loulé — Study Support & After-School Club",
+    "description_pt": "Apoio ao estudo, explicações e atividades de tempos livres (ATL) para crianças e jovens em Loulé.",
+    "description_en": "Study support, tutoring and after-school activities for children and young people in Loulé."
+  },
+  "hero": {
+    "tagline_pt": "Em Loulé",
+    "tagline_en": "In Loulé",
+    "heading_pt": "Um sítio seguro para estudar e crescer",
+    "heading_en": "A safe place to study and grow",
+    "subheading_pt": "Apoio ao estudo, explicações e atividades depois da escola, com uma equipa que acompanha cada criança de perto.",
+    "subheading_en": "Study support, tutoring and after-school activities, with a team that follows each child closely.",
+    "slides": [
+      {
+        "image": "hero-1.svg",
+        "alt_pt": "Sala de estudo do Centro Sé Educa Loulé",
+        "alt_en": "Study room at Centro Sé Educa Loulé",
+        "focus_y": 50
+      },
+      {
+        "image": "hero-2.svg",
+        "alt_pt": "Crianças em atividade de grupo",
+        "alt_en": "Children in a group activity",
+        "focus_y": 50
+      },
+      {
+        "image": "hero-3.svg",
+        "alt_pt": "Apoio individual aos trabalhos de casa",
+        "alt_en": "One-to-one homework support",
+        "focus_y": 50
+      }
+    ]
+  },
+  "about": {
+    "label_pt": "Sobre nós",
+    "label_en": "About us",
+    "heading_pt": "Quem somos",
+    "heading_en": "Who we are",
+    "body_pt": "O Centro Sé Educa Loulé é um espaço de apoio ao estudo e atividades de tempos livres (ATL) para crianças e jovens. Acompanhamos os trabalhos de casa, reforçamos as disciplinas onde é preciso mais ajuda, e organizamos atividades extracurriculares depois da escola, num ambiente próximo e seguro.\n\n*(Texto de exemplo — substituir com a apresentação real do centro em /admin/.)*",
+    "body_en": "Centro Sé Educa Loulé is a study support and after-school club (ATL) for children and young people. We help with homework, reinforce subjects where extra support is needed, and run extracurricular activities after school, in a close and safe environment.\n\n*(Placeholder text — replace with the centre's real introduction in /admin/.)*",
+    "image": "about-placeholder.svg",
+    "image_alt_pt": "Equipa do Centro Sé Educa Loulé",
+    "image_alt_en": "The Centro Sé Educa Loulé team"
+  },
+  "activities_teaser": {
+    "label_pt": "O que fazemos",
+    "label_en": "What we do",
+    "heading_pt": "Apoio ao estudo e atividades",
+    "heading_en": "Study support and activities",
+    "body_pt": "De explicações a atividades extracurriculares, cada criança tem um acompanhamento pensado para si.",
+    "body_en": "From tutoring to extracurricular activities, every child gets support built around them.",
+    "image": "activities-placeholder.svg",
+    "image_alt_pt": "Crianças em atividade no centro",
+    "image_alt_en": "Children in an activity at the centre"
+  },
+  "timetable_teaser": {
+    "label_pt": "Horários",
+    "label_en": "Timetables",
+    "heading_pt": "Sabe sempre o que está a decorrer",
+    "heading_en": "Always know what's on",
+    "body_pt": "Consulte o horário geral do centro, ou o horário individual de cada professor, sempre atualizado."
+  }
+}

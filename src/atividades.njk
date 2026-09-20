@@ -1,0 +1,49 @@
+---
+layout: base.njk
+pageKey: activities
+pagination:
+  data: site.localeCodes
+  size: 1
+  alias: locale
+permalink: "{{ site.pages.activities[locale] }}"
+---
+
+<section class="page-head">
+  <div class="wrap-narrow">
+    <span class="eyebrow">{{ activities.intro | loc('label', locale) }}</span>
+    <h1 class="page-title">{{ activities.intro | loc('heading', locale) }}</h1>
+    <p class="section-desc">{{ activities.intro | loc('body', locale) }}</p>
+  </div>
+</section>
+
+<section class="section section-activities">
+  <div class="wrap-narrow">
+    {% for group in activities.groups %}
+    <div class="activity-group reveal">
+      <h2 class="activity-group-title">{{ group | loc('name', locale) }}</h2>
+      <ul class="activity-list">
+        {% for item in group.items %}
+        <li class="activity">
+          <div class="activity-main">
+            <h3 class="activity-name">{{ item | loc('name', locale) }}</h3>
+            <p class="activity-desc">{{ item | loc('description', locale) }}</p>
+          </div>
+          {% set age = item | loc('age', locale) %}
+          {% if age %}
+          <div class="activity-meta">
+            <span class="activity-age-label">{{ t.age_label }}</span>
+            <span class="activity-age">{{ age }}</span>
+          </div>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+
+    <div class="cta-band reveal">
+      <p>{{ home.timetable_teaser | loc('body', locale) }}</p>
+      <a class="btn" href="{{ site.pages.timetable[locale] }}">{{ t.view_timetable }}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,75 @@
+<header class="nav" data-nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="{{ site.pages.home[locale] }}">
+      <span class="nav-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><path fill="currentColor" d="M24 4 4 14v4l20 10 20-10v-4L24 4Zm0 6.5L37 17l-13 6.5L11 17l13-6.5ZM8 22.2V32c0 4.4 7.2 8 16 8s16-3.6 16-8v-9.8l-16 8-16-8Z"/></svg>
+      </span>
+      <span class="nav-logo-text">
+        <span class="nav-logo-name">{{ site.name }}</span>
+        <span class="nav-logo-sub">{{ t.brand_sub }}</span>
+      </span>
+    </a>
+
+    <nav class="nav-links" aria-label="{{ t.main_nav }}">
+      {% for key in site.nav %}
+      <a href="{{ site.pages[key][locale] }}"{% if key == pageKey %} aria-current="page"{% endif %}>{{ t['nav_' + key] }}</a>
+      {% endfor %}
+    </nav>
+
+    <div class="nav-right">
+      {% if contact.social.instagram %}
+      <a class="nav-instagram" href="{{ contact.social.instagram }}" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor"/>
+        </svg>
+      </a>
+      {% endif %}
+
+      <div class="lang-switch" role="group" aria-label="{{ t.language }}">
+        {% for l in site.locales %}
+        <a href="{{ site.pages[pageKey][l.code] }}"
+           hreflang="{{ l.htmlLang }}"
+           lang="{{ l.htmlLang }}"
+           class="lang-option{% if l.code == locale %} is-active{% endif %}"
+           {% if l.code == locale %}aria-current="true"{% endif %}
+           title="{{ l.label }}">{{ l.short }}</a>
+        {% endfor %}
+      </div>
+
+      <button class="nav-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">
+        <span class="sr-only">{{ t.menu_open }}</span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" hidden>
+  <nav class="mobile-menu-links" aria-label="{{ t.main_nav }}">
+    {% for key in site.nav %}
+    <a href="{{ site.pages[key][locale] }}"{% if key == pageKey %} aria-current="page"{% endif %}>{{ t['nav_' + key] }}</a>
+    {% endfor %}
+  </nav>
+  <div class="mobile-menu-lang">
+    <span class="mobile-menu-lang-label">{{ t.language }}</span>
+    <div class="lang-switch">
+      {% for l in site.locales %}
+      <a href="{{ site.pages[pageKey][l.code] }}" lang="{{ l.htmlLang }}" class="lang-option{% if l.code == locale %} is-active{% endif %}">{{ l.short }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if contact.social.instagram %}
+  <a class="mobile-menu-instagram" href="{{ contact.social.instagram }}" rel="noopener noreferrer" target="_blank">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor"/>
+    </svg>
+    {{ t.instagram_cta }}
+  </a>
+  {% endif %}
+</div>

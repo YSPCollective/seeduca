@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "title_pt": "Professores — Centro Sé Educa Loulé",
+    "title_en": "Teachers — Centro Sé Educa Loulé",
+    "description_pt": "Conheça a equipa do Centro Sé Educa Loulé e consulte o horário individual de cada professor.",
+    "description_en": "Meet the Centro Sé Educa Loulé team and view each teacher's individual schedule."
+  },
+  "intro": {
+    "label_pt": "A equipa",
+    "label_en": "The team",
+    "heading_pt": "Professores",
+    "heading_en": "Teachers",
+    "body_pt": "Cada professor tem a sua própria página de horário, atualizada automaticamente sempre que o horário muda."
+  },
+  "list": [
+    {
+      "name": "Ana Silva",
+      "slug": "ana-silva",
+      "role_pt": "Explicadora de Matemática",
+      "role_en": "Maths Tutor",
+      "photo": "",
+      "bio_pt": "Exemplo de biografia curta — substituir em /admin/.",
+      "bio_en": "Example short bio — replace in /admin/.",
+      "schedule": [
+        { "day_key": "mon", "time": "17h00 – 18h00", "activity_pt": "Explicações de Matemática — 5º/6º ano", "activity_en": "Maths Tutoring — Grades 5-6" },
+        { "day_key": "wed", "time": "17h00 – 18h00", "activity_pt": "Explicações de Matemática — 7º/8º ano", "activity_en": "Maths Tutoring — Grades 7-8" }
+      ]
+    },
+    {
+      "name": "Rui Costa",
+      "slug": "rui-costa",
+      "role_pt": "Explicador de Português",
+      "role_en": "Portuguese Tutor",
+      "photo": "",
+      "bio_pt": "Exemplo de biografia curta — substituir em /admin/.",
+      "bio_en": "Example short bio — replace in /admin/.",
+      "schedule": [
+        { "day_key": "wed", "time": "16h00 – 17h00", "activity_pt": "Explicações de Português — 5º/6º ano", "activity_en": "Portuguese Tutoring — Grades 5-6" }
+      ]
+    },
+    {
+      "name": "Marta Oliveira",
+      "slug": "marta-oliveira",
+      "role_pt": "Monitora de Atividades",
+      "role_en": "Activities Coordinator",
+      "photo": "",
+      "bio_pt": "Exemplo de biografia curta — substituir em /admin/.",
+      "bio_en": "Example short bio — replace in /admin/.",
+      "schedule": [
+        { "day_key": "tue", "time": "17h00 – 18h00", "activity_pt": "Artes & Culinária", "activity_en": "Arts & Cooking" },
+        { "day_key": "thu", "time": "17h00 – 18h00", "activity_pt": "Desporto", "activity_en": "Sports" }
+      ]
+    }
+  ]
+}

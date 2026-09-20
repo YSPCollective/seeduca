@@ -1,0 +1,25 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- for key, urls in site.pages %}
+  {%- for l in site.locales %}
+  <url>
+    <loc>{{ site.url }}{{ urls[l.code] }}</loc>
+    {%- for alt in site.locales %}
+    <xhtml:link rel="alternate" hreflang="{{ alt.htmlLang }}" href="{{ site.url }}{{ urls[alt.code] }}"/>
+    {%- endfor %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ urls[site.defaultLocale] }}"/>
+  </url>
+  {%- endfor %}
+{%- endfor %}
+{%- for teacher in teachers.list %}
+  {%- for l in site.locales %}
+  <url>
+    <loc>{{ site.url }}{{ site.pages.teachers[l.code] }}{{ teacher.slug }}/</loc>
+  </url>
+  {%- endfor %}
+{%- endfor %}
+</urlset>

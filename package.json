@@ -1,0 +1,15 @@
+{
+  "name": "cse-loule",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Centro Sé Educa Loulé website",
+  "scripts": {
+    "build": "eleventy --config=eleventy.config.js",
+    "start": "eleventy --serve --config=eleventy.config.js",
+    "dev": "eleventy --serve --watch --config=eleventy.config.js"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "markdown-it": "^14.1.0"
+  }
+}
