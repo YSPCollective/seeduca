@@ -3,7 +3,7 @@
   // the build command from package.json, then wire up this Worker with the
   // build output (_site) served as static assets, falling through to
   // worker/index.js only for the two OAuth routes it handles.
-  "name": "cse-loule",
+  "name": "seeduca",
   "main": "worker/index.js",
   "compatibility_date": "2024-09-23",
   "assets": {
@@ -16,7 +16,7 @@
     // it is stored. Fill this in once the OAuth app is registered — see
     // HANDOVER.md — and redeploy.
     "GITHUB_OAUTH_ID": "Ov23liwyToVKsdMidnR8"
-  }
+  },
   // The Client Secret needs to stay out of the repo. Added as a Cloudflare
   // Secrets Store secret (Workers & Pages, this project, Settings, Bindings,
   // Add binding, Secrets Store) bound to the name GITHUB_OAUTH_SECRET. See
