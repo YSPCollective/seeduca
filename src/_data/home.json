@@ -14,21 +14,15 @@
     "subheading_en": "Study support, tutoring and after-school activities, with a team that follows each child closely.",
     "slides": [
       {
-        "image": "hero-1.svg",
-        "alt_pt": "Sala de estudo do Centro Sé Educa Loulé",
-        "alt_en": "Study room at Centro Sé Educa Loulé",
+        "image": "hero-photo-1.png",
+        "alt_pt": "Professora a apoiar um grupo de crianças na sala de estudo",
+        "alt_en": "A teacher supporting a group of children in the study room",
         "focus_y": 50
       },
       {
-        "image": "hero-2.svg",
-        "alt_pt": "Crianças em atividade de grupo",
-        "alt_en": "Children in a group activity",
-        "focus_y": 50
-      },
-      {
-        "image": "hero-3.svg",
-        "alt_pt": "Apoio individual aos trabalhos de casa",
-        "alt_en": "One-to-one homework support",
+        "image": "hero-photo-2.png",
+        "alt_pt": "Professora a ajudar crianças com os trabalhos de casa",
+        "alt_en": "A teacher helping children with their homework",
         "focus_y": 50
       }
     ]
